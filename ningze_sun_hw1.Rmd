@@ -1,0 +1,202 @@
+---
+title: "ningze_sun_hw1"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+First of all: loading all library needed for this homework readr, stringr, hash, and define all the functions.
+
+The reason of using hash function is that I would like a hash-like function for counting based on my coding style.
+
+```{r library, warning=0}
+library('readr')
+library('stringr')
+library('hash')
+split_inside = function(i){
+  t = str_split(str_replace_all(i, '[[:punct:]]', ""), ' ')[[1]]
+  return(t[t != ""])
+}
+
+
+hash_count = function(split){
+  count = hash()
+  for (i in split){
+    if (is.null(count[[i]])){
+      count[[i]] = 1
+    }
+    else{
+      count[[i]] = count[[i]] + 1
+    }
+  }
+  return(count)
+}
+
+path = getwd()
+if (path != 'E:/class/statistic/BIO384K/ningze-sun-ada-homework-1'){
+  setwd('E:/class/statistic/BIO384K/ningze-sun-ada-homework-1')
+}
+```
+
+
+## Challenge 1:
+
+Use read_dim() to load data file “darwin.txt” into a character vector, where each element is a paragraph.
+
+```{r read_file}
+file = read_delim('darwin.txt', '\n')[[1]]
+```
+
+Calculate and print out how many paragraphs are there in the chapter and print out the 34th paragraph
+
+```{r part_1}
+print(paste("In darwin.txt, there are", toString(length(file)), "paragraphs"))
+print(paste("The 34th paragraph is: ", file[[34]]))
+```
+
+Split into new vector, split comprising 1-word character strings using split_inside function with str_split and str_replace_all to remove all unword-character such as . , 
+
+These functions are defined at very beginning for saving coding writing.
+
+```{r part_2}
+split = c()
+for (i in file){
+  split = c(split, split_inside(i))
+}
+
+```
+
+print how many unique words in this vector by unique function; Count each word appearing using hash_count function by hash and loop. 
+
+Then loop the hash by its keys to count most common word, appear 1 time, 5 or more times.
+
+```{r part_3}
+print(paste("There are", toString(length(unique(split))), "unique words in this vector"))
+count = hash_count(split)
+max_name = ""
+max_value = 0
+equal = 0
+larger = 0
+for (i in keys(count)){
+  if (count[[i]] == 1){
+    equal = equal + 1
+  }
+  if (count[[i]] >= 5){
+    larger = larger + 1
+  }
+  if (count[[i]] > max_value){
+    max_value = count[[i]]
+    max_name = i
+  }
+}
+print(paste("The most common word are", max_name))
+print(paste(toString(equal), "words are appear 1 time"))
+print(paste(toString(larger), "words are appear more than 5 time"))
+
+```
+
+Extract the entire text of the last paragraph to a new variable, final_quote;
+
+Split this vector into a new vector, split_quote, comprising 1-word vectors by split_inside and use seq to select every 3 third vector and use sort to rearrange the elements.
+
+```{r part_4}
+final_quote = file[[length(file)]]
+split_quote = split_inside(final_quote)
+every_third = split_quote[seq(1, length(split_quote), 3)]
+print("Every third elemnt from this vector are: ")
+print(every_third)
+print("The reverse alphabetical order of every_third are ")
+print(sort(every_third, decreasing = TRUE))
+
+```
+
+
+## Challenge 2:
+
+
+Create the temperature and city using c(), and use names to associate data with city and use [] and : to print required temperature
+
+```{r part_6}
+t = c(35, 88, 42, 84, 81, 30)
+city= c('Beijing', 'Lagos', 'Paris', 'Rio de Janeiro', 'San Juan', 'Toronto')
+names(t) = city
+print("The first 3 cities in the list are")
+print(t[city[1:3]])
+print("The temperatures of Paris and San Juan are")
+print(t[city[c(3, 5)]])
+
+```
+
+## Challenge 3:
+
+Create a 8 row by 20 column matrix,consisting descending order from 159 to 0 filling matrix column-wise.
+
+```{r part_7}
+m1 = matrix(seq(159,0), nrow = 8, ncol = 20, byrow= TRUE)
+print(paste("extract and print the element in row 5, column 2:", toString(m1[5,2])))
+print("extract and print the contents of rows 5 to 7 of the matrix.")
+print(m1[5:7,])
+m2 = m1[3:4,6:9]
+print(paste("The class of variable is", toString(class(m2))))
+print(paste("The mode of this variable is", toString(mode(m2))))
+
+```
+
+
+## Challenge 4:
+
+Construct a 4-dimensional, 400-element array (5 x 5 x 4 x 4), consisting of even integers from 2 to 800 
+
+```{r part_8}
+a = array(seq(800, 1, -2), dim = c(5,5,4,4))
+print(a[1, 1, 1, 2])
+print(a[2, 3, 2, ])
+print(a[1:5, 1:5, 3, 3])
+
+```
+
+
+
+
+
+
+
+## Challenge 5:
+
+Create a list representing the primate taxonomy outlined. Use hard coding for each family, superfamily et.
+
+Use double bracket notation to extract the New World monkeys (Parvorder Platyrrhini) into a new variable, print the class and mode
+
+Use $ notation to extract the tarisers
+
+```{r part_9}
+# superfamily
+Lorisoidea = c('Lorisidae', 'Galagidae')
+Lemuroidea = c('Cheirogaleidae', 'Lepilemuridae', 'Indriidae', 'Lemuridae', 'Daubentoniidae')
+Tarsioidea = c('Tarsiidae')
+Ceboidea = c("Cebidae", "Atelidae", 'Pitheciidae')
+Hominoidea = c('Hylobatidae', 'Hominidae')
+Cercopithecoidea = c('Cercopithecidae')
+# infraorder
+Lorisiformes = list(Lorisoidea=Lorisoidea)
+Lemuriformes = list(Lemuroidea=Lemuroidea)
+Tarsiiformes = list(Tarsioidea=Tarsioidea)
+# Parvorder
+Platyrrhini = list(Ceboidea=Ceboidea)
+Catarrhini = list(Hominoidea=Hominoidea, Cercopithecoidea=Cercopithecoidea)
+Simiiformes = list(Platyrrhini=Platyrrhini, Catarrhini=Catarrhini)
+# suborder
+Strepsirhini = list(Lorisiformes=Lorisiformes, Lemuriformes=Lemuriformes)
+Haplorhini = list(Tarsiiformes=Tarsiiformes,Simiiformes=Simiiformes)
+# order
+Primates = list(Strepsirhini=Strepsirhini,Haplorhini=Haplorhini)
+platyrrhines = Primates[['Haplorhini']][['Simiiformes']][['Platyrrhini']]
+print(paste("The class of variable is", toString(class(platyrrhines))))
+print(paste("The mode of this variable is", toString(mode(platyrrhines))))
+tariser = Primates$Haplorhini$Tarsiiformes$Tarsioidea
+print(tariser)
+
+```
+
