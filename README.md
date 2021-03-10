@@ -12,6 +12,8 @@ ningze_sun_hw1.html, the html file for this homework presentation
 
 ningze_sun_hw1.RMD, the RMD files for html files
 
+redo_python.ipynb: double check it in python to make sure it is correct
+
 ## requirement and library
 
 In this homework, I used readr for reading the txt files and stringr for split and replacement in the database and hash library to achieve a similar hash function.

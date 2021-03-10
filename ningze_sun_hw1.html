@@ -456,43 +456,43 @@ print(paste(&quot;The most common word are&quot;, max_name))</code></pre>
 <p>Split this vector into a new vector, split_quote, comprising 1-word vectors by split_inside and use seq to select every 3 third vector and use sort to rearrange the elements.</p>
 <pre class="r"><code>final_quote = file[[length(file)]]
 split_quote = split_inside(final_quote)
-every_third = split_quote[seq(1, length(split_quote), 3)]
+every_third = split_quote[seq(3, length(split_quote), 3)]
 print(&quot;Every third elemnt from this vector are: &quot;)</code></pre>
 <pre><code>## [1] &quot;Every third elemnt from this vector are: &quot;</code></pre>
 <pre class="r"><code>print(every_third)</code></pre>
-<pre><code>##  [1] &quot;It&quot;          &quot;to&quot;          &quot;tangled&quot;     &quot;with&quot;        &quot;of&quot;         
-##  [6] &quot;with&quot;        &quot;on&quot;          &quot;with&quot;        &quot;flitting&quot;    &quot;with&quot;       
-## [11] &quot;through&quot;     &quot;earth&quot;       &quot;reflect&quot;     &quot;elaborately&quot; &quot;so&quot;         
-## [16] &quot;each&quot;        &quot;dependent&quot;   &quot;other&quot;       &quot;complex&quot;     &quot;have&quot;       
-## [21] &quot;produced&quot;    &quot;acting&quot;      &quot;These&quot;       &quot;in&quot;          &quot;sense&quot;      
-## [26] &quot;with&quot;        &quot;which&quot;       &quot;implied&quot;     &quot;Variability&quot; &quot;indirect&quot;   
-## [31] &quot;action&quot;      &quot;conditions&quot;  &quot;and&quot;         &quot;and&quot;         &quot;Ratio&quot;      
-## [36] &quot;so&quot;          &quot;to&quot;          &quot;a&quot;           &quot;Life&quot;        &quot;a&quot;          
-## [41] &quot;Natural&quot;     &quot;Divergence&quot;  &quot;and&quot;         &quot;of&quot;          &quot;forms&quot;      
-## [46] &quot;the&quot;         &quot;nature&quot;      &quot;and&quot;         &quot;most&quot;        &quot;which&quot;      
-## [51] &quot;capable&quot;     &quot;namely&quot;      &quot;of&quot;          &quot;animals&quot;     &quot;There&quot;      
-## [56] &quot;in&quot;          &quot;of&quot;          &quot;its&quot;         &quot;having&quot;      &quot;breathed&quot;   
-## [61] &quot;Creator&quot;     &quot;few&quot;         &quot;into&quot;        &quot;that&quot;        &quot;planet&quot;     
-## [66] &quot;circling&quot;    &quot;to&quot;          &quot;law&quot;         &quot;from&quot;        &quot;a&quot;          
-## [71] &quot;forms&quot;       &quot;and&quot;         &quot;have&quot;        &quot;are&quot;</code></pre>
+<pre><code>##  [1] &quot;interesting&quot;  &quot;a&quot;            &quot;clothed&quot;      &quot;plants&quot;       &quot;kinds&quot;       
+##  [6] &quot;singing&quot;      &quot;bushes&quot;       &quot;insects&quot;      &quot;and&quot;          &quot;crawling&quot;    
+## [11] &quot;damp&quot;         &quot;to&quot;           &quot;these&quot;        &quot;forms&quot;        &quot;from&quot;        
+## [16] &quot;and&quot;          &quot;each&quot;         &quot;so&quot;           &quot;manner&quot;       &quot;been&quot;        
+## [21] &quot;laws&quot;         &quot;us&quot;           &quot;taken&quot;        &quot;largest&quot;      &quot;Growth&quot;      
+## [26] &quot;Inheritance&quot;  &quot;almost&quot;       &quot;reproduction&quot; &quot;the&quot;          &quot;direct&quot;      
+## [31] &quot;the&quot;          &quot;life&quot;         &quot;use&quot;          &quot;a&quot;            &quot;Increase&quot;    
+## [36] &quot;as&quot;           &quot;to&quot;           &quot;for&quot;          &quot;as&quot;           &quot;to&quot;          
+## [41] &quot;entailing&quot;    &quot;Character&quot;    &quot;Extinction&quot;   &quot;improved&quot;     &quot;from&quot;        
+## [46] &quot;of&quot;           &quot;famine&quot;       &quot;the&quot;          &quot;object&quot;       &quot;are&quot;         
+## [51] &quot;conceiving&quot;   &quot;production&quot;   &quot;higher&quot;       &quot;follows&quot;      &quot;grandeur&quot;    
+## [56] &quot;view&quot;         &quot;with&quot;         &quot;powers&quot;       &quot;originally&quot;   &quot;the&quot;         
+## [61] &quot;a&quot;            &quot;or&quot;           &quot;and&quot;          &quot;this&quot;         &quot;gone&quot;        
+## [66] &quot;according&quot;    &quot;fixed&quot;        &quot;gravity&quot;      &quot;simple&quot;       &quot;endless&quot;     
+## [71] &quot;beautiful&quot;    &quot;wonderful&quot;    &quot;and&quot;          &quot;evolved&quot;</code></pre>
 <pre class="r"><code>print(&quot;The reverse alphabetical order of every_third are &quot;)</code></pre>
 <pre><code>## [1] &quot;The reverse alphabetical order of every_third are &quot;</code></pre>
 <pre class="r"><code>print(sort(every_third, decreasing = TRUE))</code></pre>
-<pre><code>##  [1] &quot;with&quot;        &quot;with&quot;        &quot;with&quot;        &quot;with&quot;        &quot;with&quot;       
-##  [6] &quot;which&quot;       &quot;which&quot;       &quot;Variability&quot; &quot;to&quot;          &quot;to&quot;         
-## [11] &quot;to&quot;          &quot;through&quot;     &quot;These&quot;       &quot;There&quot;       &quot;the&quot;        
-## [16] &quot;that&quot;        &quot;tangled&quot;     &quot;so&quot;          &quot;so&quot;          &quot;sense&quot;      
-## [21] &quot;reflect&quot;     &quot;Ratio&quot;       &quot;produced&quot;    &quot;planet&quot;      &quot;other&quot;      
-## [26] &quot;on&quot;          &quot;of&quot;          &quot;of&quot;          &quot;of&quot;          &quot;of&quot;         
-## [31] &quot;nature&quot;      &quot;Natural&quot;     &quot;namely&quot;      &quot;most&quot;        &quot;Life&quot;       
-## [36] &quot;law&quot;         &quot;its&quot;         &quot;It&quot;          &quot;into&quot;        &quot;indirect&quot;   
-## [41] &quot;in&quot;          &quot;in&quot;          &quot;implied&quot;     &quot;having&quot;      &quot;have&quot;       
-## [46] &quot;have&quot;        &quot;from&quot;        &quot;forms&quot;       &quot;forms&quot;       &quot;flitting&quot;   
-## [51] &quot;few&quot;         &quot;elaborately&quot; &quot;earth&quot;       &quot;each&quot;        &quot;Divergence&quot; 
-## [56] &quot;dependent&quot;   &quot;Creator&quot;     &quot;conditions&quot;  &quot;complex&quot;     &quot;circling&quot;   
-## [61] &quot;capable&quot;     &quot;breathed&quot;    &quot;are&quot;         &quot;animals&quot;     &quot;and&quot;        
-## [66] &quot;and&quot;         &quot;and&quot;         &quot;and&quot;         &quot;and&quot;         &quot;action&quot;     
-## [71] &quot;acting&quot;      &quot;a&quot;           &quot;a&quot;           &quot;a&quot;</code></pre>
+<pre><code>##  [1] &quot;wonderful&quot;    &quot;with&quot;         &quot;view&quot;         &quot;use&quot;          &quot;us&quot;          
+##  [6] &quot;to&quot;           &quot;to&quot;           &quot;to&quot;           &quot;this&quot;         &quot;these&quot;       
+## [11] &quot;the&quot;          &quot;the&quot;          &quot;the&quot;          &quot;the&quot;          &quot;taken&quot;       
+## [16] &quot;so&quot;           &quot;singing&quot;      &quot;simple&quot;       &quot;reproduction&quot; &quot;production&quot;  
+## [21] &quot;powers&quot;       &quot;plants&quot;       &quot;originally&quot;   &quot;or&quot;           &quot;of&quot;          
+## [26] &quot;object&quot;       &quot;manner&quot;       &quot;life&quot;         &quot;laws&quot;         &quot;largest&quot;     
+## [31] &quot;kinds&quot;        &quot;interesting&quot;  &quot;insects&quot;      &quot;Inheritance&quot;  &quot;Increase&quot;    
+## [36] &quot;improved&quot;     &quot;higher&quot;       &quot;Growth&quot;       &quot;gravity&quot;      &quot;grandeur&quot;    
+## [41] &quot;gone&quot;         &quot;from&quot;         &quot;from&quot;         &quot;forms&quot;        &quot;for&quot;         
+## [46] &quot;follows&quot;      &quot;fixed&quot;        &quot;famine&quot;       &quot;Extinction&quot;   &quot;evolved&quot;     
+## [51] &quot;entailing&quot;    &quot;endless&quot;      &quot;each&quot;         &quot;direct&quot;       &quot;damp&quot;        
+## [56] &quot;crawling&quot;     &quot;conceiving&quot;   &quot;clothed&quot;      &quot;Character&quot;    &quot;bushes&quot;      
+## [61] &quot;been&quot;         &quot;beautiful&quot;    &quot;as&quot;           &quot;as&quot;           &quot;are&quot;         
+## [66] &quot;and&quot;          &quot;and&quot;          &quot;and&quot;          &quot;and&quot;          &quot;almost&quot;      
+## [71] &quot;according&quot;    &quot;a&quot;            &quot;a&quot;            &quot;a&quot;</code></pre>
 </div>
 <div id="challenge-2" class="section level2">
 <h2>Challenge 2:</h2>

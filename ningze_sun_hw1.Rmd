@@ -104,7 +104,7 @@ Split this vector into a new vector, split_quote, comprising 1-word vectors by s
 ```{r part_4}
 final_quote = file[[length(file)]]
 split_quote = split_inside(final_quote)
-every_third = split_quote[seq(1, length(split_quote), 3)]
+every_third = split_quote[seq(3, length(split_quote), 3)]
 print("Every third elemnt from this vector are: ")
 print(every_third)
 print("The reverse alphabetical order of every_third are ")
